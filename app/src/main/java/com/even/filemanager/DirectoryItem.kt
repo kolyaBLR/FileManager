@@ -20,4 +20,7 @@ class DirectoryItem(private var path: String = "",
     fun setPath(path: String) {
         this.path = path
     }
+
+    fun getFormatSize() = SizeFileNameContainer(File(path).length()).getPreviewNameSize()
+
 }

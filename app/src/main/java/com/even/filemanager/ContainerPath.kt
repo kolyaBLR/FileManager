@@ -61,7 +61,8 @@ class ContainerPath(path: String = "/", val filterType: ArrayList<String>) {
         ""
     }
 
-    protected fun isFilterType(type: String): Boolean = filterType.contains(type)
+    protected fun isFilterType(type: String): Boolean =
+            filterType.size == 0 || filterType.contains(type)
 
     protected fun clearNoFilterPath(item: DirectoryItem) {
         var i = 0

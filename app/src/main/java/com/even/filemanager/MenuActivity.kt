@@ -3,17 +3,13 @@ package com.even.filemanager
 import android.os.Bundle
 import android.os.Environment
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.ProgressBar
 import android.widget.TextView
 
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var Path: TextView
     private lateinit var Directory: ListView
-    private lateinit var Progress: ProgressBar
 
     private lateinit var containerPath: ContainerPath
 
@@ -44,13 +40,11 @@ class MenuActivity : AppCompatActivity() {
 
     private fun showDir(item: DirectoryItem) {
         Path.text = item.getAbsolutePath()
-        Directory.adapter = ArrayAdapter(this,
-                android.R.layout.simple_list_item_1, item.list.map {
-            it.getPreviewPath().replace(item.getAbsolutePath(), "").substring(1)
-        })
+        Directory.adapter = PathAdapter(this,
+                R.layout.item_path, containerPath)
     }
 
     private fun getFilterPath(): ArrayList<String> = ArrayList<String>().apply {
-        add(".mp3")
+        //add(".mp3")
     }
 }
